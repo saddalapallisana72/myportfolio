@@ -5,196 +5,297 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saddalapalli Sana - Portfolio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --lilac-primary: #c4b5fd;
+            --lilac-light: #e9d5ff;
+            --lilac-lighter: #f5f3ff;
+            --lilac-dark: #a78bfa;
+            --text-primary: #2d2d2d;
+            --text-secondary: #6b6b6b;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #faf8ff 0%, #f8f5ff 50%, #fdf4ff 100%);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f3ff 0%, #faf5ff 50%, #fdf4ff 100%);
-            color: #4a4a4a;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            line-height: 1.8;
             overflow-x: hidden;
+            font-weight: 300;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 80px 30px;
         }
 
+        /* Header Section */
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #e9d5ff 0%, #f3e8ff 100%);
-            border-radius: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(167, 139, 250, 0.15);
-            animation: fadeInDown 0.8s ease;
+            margin-bottom: 80px;
+            animation: fadeIn 1s ease;
         }
 
-        h1 {
-            font-size: 3em;
-            color: #7c3aed;
-            margin-bottom: 10px;
-            font-weight: 600;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            font-size: 1.3em;
-            color: #9333ea;
+        .name {
+            font-size: 3.5em;
             font-weight: 300;
+            color: var(--text-primary);
+            letter-spacing: -2px;
             margin-bottom: 15px;
         }
 
-        .tagline {
-            font-size: 1em;
-            color: #6b7280;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        section {
-            background: white;
-            padding: 40px;
+        .title {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 30px;
-            border-radius: 25px;
-            box-shadow: 0 5px 25px rgba(167, 139, 250, 0.1);
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--lilac-primary);
+            margin: 30px auto;
+        }
+
+        .intro {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 70px;
             animation: fadeInUp 0.8s ease;
-            border: 1px solid #f3e8ff;
         }
 
-        h2 {
-            color: #7c3aed;
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e9d5ff;
+        .section-title {
+            font-size: 0.85em;
             font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lilac-dark);
+            margin-bottom: 35px;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        .education-item, .language-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
-            border-radius: 15px;
-            border-left: 4px solid #c084fc;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--lilac-primary);
         }
 
-        .education-item:hover, .language-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(167, 139, 250, 0.15);
+        /* Education Cards */
+        .education-grid {
+            display: grid;
+            gap: 20px;
         }
 
-        .education-item h3 {
-            color: #9333ea;
-            font-size: 1.2em;
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(196, 181, 253, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--lilac-primary);
+            transition: height 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(196, 181, 253, 0.15);
+            border-color: var(--lilac-primary);
+        }
+
+        .card:hover::before {
+            height: 100%;
+        }
+
+        .card-title {
+            font-size: 1.15em;
+            font-weight: 500;
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
-        .education-item p {
-            color: #6b7280;
+        .card-subtitle {
             font-size: 0.95em;
-            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+        .card-meta {
+            font-size: 0.85em;
+            color: var(--lilac-dark);
+            font-weight: 400;
         }
 
-        .skill-tag {
-            background: linear-gradient(135deg, #e9d5ff 0%, #f3e8ff 100%);
-            color: #7c3aed;
-            padding: 15px 20px;
-            border-radius: 15px;
-            text-align: center;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid #ddd6fe;
-        }
-
-        .skill-tag:hover {
-            background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.3);
-        }
-
-        .languages {
+        /* Skills Grid */
+        .skills-container {
             display: flex;
-            gap: 15px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            gap: 12px;
         }
 
-        .language-tag {
-            background: white;
-            color: #9333ea;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 500;
-            border: 2px solid #e9d5ff;
+        .skill-item {
+            background: var(--white);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 400;
+            border: 1px solid rgba(196, 181, 253, 0.3);
             transition: all 0.3s ease;
         }
 
-        .language-tag:hover {
-            background: #e9d5ff;
-            border-color: #c084fc;
-            transform: scale(1.05);
+        .skill-item:hover {
+            background: var(--lilac-lighter);
+            border-color: var(--lilac-primary);
+            transform: translateY(-2px);
         }
 
+        /* Languages */
+        .languages-list {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .language-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--lilac-primary);
+            border-radius: 50%;
+        }
+
+        /* Interests Grid */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .interest-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(196, 181, 253, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .interest-card:hover {
+            background: var(--lilac-lighter);
+            border-color: var(--lilac-primary);
+            transform: translateY(-3px);
+        }
+
+        .interest-icon {
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+
+        .interest-name {
+            font-size: 0.9em;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Activities */
         .activities-list {
             list-style: none;
-            margin-top: 20px;
         }
 
         .activities-list li {
-            padding: 15px;
-            margin-bottom: 12px;
-            background: linear-gradient(to right, #faf5ff 0%, #ffffff 100%);
-            border-radius: 12px;
-            border-left: 3px solid #a855f7;
-            transition: all 0.3s ease;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(196, 181, 253, 0.2);
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            padding-left: 25px;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        .activities-list li:hover {
-            background: linear-gradient(to right, #f3e8ff 0%, #faf5ff 100%);
-            transform: translateX(5px);
+        .activities-list li:last-child {
+            border-bottom: none;
         }
 
         .activities-list li::before {
-            content: "✦ ";
-            color: #a855f7;
-            font-weight: bold;
-            margin-right: 10px;
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--lilac-primary);
+            font-weight: 600;
         }
 
+        .activities-list li:hover {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
-            color: #9333ea;
-            font-size: 0.9em;
-            background: linear-gradient(135deg, #e9d5ff 0%, #f3e8ff 100%);
-            border-radius: 20px;
-            margin-top: 40px;
+            padding: 50px 0 30px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(196, 181, 253, 0.2);
         }
 
-        @keyframes fadeInDown {
+        .footer-text {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -209,87 +310,142 @@
             }
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
+            .container {
+                padding: 50px 20px;
+            }
+
+            .name {
+                font-size: 2.5em;
+            }
+
+            .title {
+                font-size: 0.9em;
+            }
+
+            .interests-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .languages-list {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .name {
                 font-size: 2em;
             }
 
-            .subtitle {
-                font-size: 1.1em;
+            .section-title {
+                font-size: 0.8em;
             }
 
-            section {
-                padding: 25px;
+            .skills-container {
+                gap: 10px;
             }
 
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            .skill-item {
+                padding: 10px 18px;
+                font-size: 0.85em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <header>
-            <h1>Saddalapalli Sana</h1>
-            <p class="subtitle">B.Tech CSE Student | Aspiring Software Developer</p>
-            <p class="tagline">Passionate about technology and innovation, seeking to apply my skills in a dynamic environment to develop cutting-edge solutions</p>
+            <h1 class="name">Saddalapalli Sana</h1>
+            <p class="title">Computer Science Student</p>
+            <div class="divider"></div>
+            <p class="intro">
+                A passionate B.Tech CSE student seeking challenging opportunities in dynamic 
+                organizations to apply skills and knowledge in developing innovative solutions
+            </p>
         </header>
 
+        <!-- Education -->
         <section>
-            <h2>About Me</h2>
-            <p>I am currently pursuing my 2nd year B.Tech in Computer Science Engineering at SSITS, Rayachoti. I am looking for challenging opportunities in a dynamic organization where I can apply my skills and knowledge to develop innovative solutions. I actively participate in internships, technical quizzes, and tests to continuously enhance my capabilities.</p>
-        </section>
-
-        <section>
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>Bachelor of Technology (B.Tech) - CSE</h3>
-                <p><strong>SSITS, Rayachoti</strong></p>
-                <p>Currently in 2nd Year</p>
-            </div>
-            <div class="education-item">
-                <h3>Intermediate</h3>
-                <p><strong>Padamavati Jr College, Rayachoti</strong></p>
-                <p>Completed</p>
-            </div>
-            <div class="education-item">
-                <h3>SSC (10th Grade)</h3>
-                <p><strong>Z.P. High School, T. Sakibanda</strong></p>
-                <p>Completed</p>
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="card">
+                    <h3 class="card-title">Bachelor of Technology in Computer Science</h3>
+                    <p class="card-subtitle">SSITS, Rayachoti</p>
+                    <p class="card-meta">Currently in 2nd Year</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Intermediate Education</h3>
+                    <p class="card-subtitle">Padamavati Jr College, Rayachoti</p>
+                    <p class="card-meta">Completed</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Secondary School Certificate</h3>
+                    <p class="card-subtitle">Z.P. High School, T. Sakibanda</p>
+                    <p class="card-meta">Completed</p>
+                </div>
             </div>
         </section>
 
+        <!-- Technical Skills -->
         <section>
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-tag">C Programming</div>
-                <div class="skill-tag">Python</div>
-                <div class="skill-tag">Java</div>
-                <div class="skill-tag">HTML</div>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <span class="skill-item">C Programming</span>
+                <span class="skill-item">Python</span>
+                <span class="skill-item">Java</span>
+                <span class="skill-item">HTML</span>
             </div>
         </section>
 
+        <!-- Languages -->
         <section>
-            <h2>Languages</h2>
-            <div class="languages">
-                <span class="language-tag">English</span>
-                <span class="language-tag">Telugu</span>
-                <span class="language-tag">Hindi</span>
+            <h2 class="section-title">Languages</h2>
+            <div class="languages-list">
+                <span class="language-item">English</span>
+                <span class="language-item">Telugu</span>
+                <span class="language-item">Hindi</span>
             </div>
         </section>
 
+        <!-- Interests -->
         <section>
-            <h2>Activities & Interests</h2>
+            <h2 class="section-title">Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <div class="interest-icon">📚</div>
+                    <p class="interest-name">Reading Books</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">🎵</div>
+                    <p class="interest-name">Listening Music</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">✍️</div>
+                    <p class="interest-name">Calligraphy</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">💡</div>
+                    <p class="interest-name">Learning New Things</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities -->
+        <section>
+            <h2 class="section-title">Activities & Engagement</h2>
             <ul class="activities-list">
                 <li>Active participation in internships</li>
-                <li>Engagement in technical quizzes and competitions</li>
-                <li>Participating in technical tests to enhance problem-solving skills</li>
+                <li>Regular engagement in technical quizzes</li>
+                <li>Participation in technical tests and competitions</li>
             </ul>
         </section>
 
+        <!-- Footer -->
         <footer>
-            <p>© 2024 Saddalapalli Sana. All rights reserved.</p>
+            <p class="footer-text">© 2024 Saddalapalli Sana</p>
         </footer>
     </div>
 </body>
